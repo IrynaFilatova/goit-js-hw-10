@@ -10,10 +10,11 @@ const btnSubmit = document.querySelector('button[type="submit"]');
 form.addEventListener('submit', event => {
   event.preventDefault();
   const delayValue = Number(inputDelay.value);
-  console.log(delayValue);
+  const selectedRadio = document.querySelector('input[name="state"]:checked');
+  const state = selectedRadio.value;
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (radioFullfilled.checked) {
+      if (state === 'fulfilled') {
         resolve(`✅ Fulfilled promise in ${delayValue}ms`);
       } else {
         reject(`❌ Rejected promise in ${delayValue}ms`);
